@@ -211,7 +211,7 @@ export default function PrimarySearchAppBar() {
               <MenuIcon />
             </IconButton>
             <IconButton color="inherit">
-              <Typography sx={{ margin: "5px" }}> TS Shopping  </Typography>
+              <Typography sx={{ margin: "5px" }}> <strong>TS SHOPPING</strong></Typography>
             </IconButton>
           </Box>
           <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: 'center' }}>
@@ -249,7 +249,7 @@ export default function PrimarySearchAppBar() {
                 </Badge>
               </IconButton>
               <IconButton>
-                <Button variant="contained" endIcon={<Badge badgeContent={0} color="error"> <AddShoppingCartIcon />  </Badge>}> My Cart  </Button>
+                <Button color='success' variant="contained" endIcon={<Badge badgeContent={1} color="error"> <AddShoppingCartIcon />  </Badge>}> My Cart  </Button>
               </IconButton>
             </Box>
             <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
