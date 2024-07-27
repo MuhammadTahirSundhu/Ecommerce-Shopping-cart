@@ -5,20 +5,26 @@ interface Item {
   id: string;
   name: string;
   description: string;
-  price: number;
-  quantity: number;
+  catagory: string;
+  price: string;
+  quantity: string;
   isAvailable: boolean;
   discount: string;
-  company:string
-  reviews?: number;
+  company: string;
+  reviews?: string;
+  img: string;
 }
 
 interface ItemState {
   items: Item[];
+  isdelete:boolean;
+  isUpdate: boolean,
 }
 
 const initialState: ItemState = {
   items: [],
+  isdelete: false,
+  isUpdate: false,
 };
 
 const itemSlice = createSlice({
@@ -36,9 +42,16 @@ const itemSlice = createSlice({
       if (index !== -1) {
         state.items[index] = action.payload;
       }
+    },
+    setIsdelete(state,action: PayloadAction<boolean>){
+      state.isdelete = action.payload;
+    },
+    setIsUpdate(state,action: PayloadAction<boolean>){
+      state.isUpdate = action.payload;
     }
+
   },
 });
 
-export const { AddItem, DeleteItem, UpdateItem} = itemSlice.actions;
+export const { AddItem, DeleteItem, UpdateItem , setIsdelete , setIsUpdate} = itemSlice.actions;
 export default itemSlice.reducer;

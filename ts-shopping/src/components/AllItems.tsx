@@ -19,10 +19,13 @@ import { purple } from '@mui/material/colors';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import Badge from '@mui/material/Badge';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../store/store';
 import { Rating } from '@mui/material';
 import StarIcon from '@mui/icons-material/Star';
+import shoes from '../assets/shoes.jpg'
+import DeleteIcon from '@mui/icons-material/Delete';
+import { DeleteItem, UpdateItem } from '../features/itemSlice';
 
 const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
     color: theme.palette.getContrastText(purple[500]),
@@ -47,83 +50,111 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
     }),
 }));
 
+interface Item {
+    id: string;
+    name: string;
+    description: string;
+    catagory: string;
+    price: string;
+    quantity: string;
+    isAvailable: boolean;
+    discount: string;
+    company: string;
+    reviews?: string;
+    img: string;
+  }
 
-
-function AllItems() {
-
-    const items = useSelector((state: RootState) => state.items.items);
-    const [expanded, setExpanded] = React.useState(false);
-
-    const handleExpandClick = () => {
-        setExpanded(!expanded);
-    };
-
-    return (
-        <>
-
-            <div className="itemContainer">
-
-                {items.map((item, index) => (
-                    <Card className="item-basic" key={index} >
-                        <CardHeader
-                            avatar={
-                                <Avatar sx={{ bgcolor: red[500] }} aria-label="Shoes">
-                                    R
-                                </Avatar>
-                            }
-                            action={
-                                <IconButton aria-label="settings">
-                                    <MoreVertIcon />
-                                </IconButton>
-                            }
-                            title={`${item.name}`}
-                            subheader={`${item.company}`}
-                        />
-                        <CardMedia
-                            component="img"
-                            height="150"
-                            image="/static/images/cards/paella.jpg"
-                            alt="Paella dish"
-                        />
-                        <CardContent>
-                            <Typography variant="body2" color="text.secondary">
-                                {`${item.description}`}
-                            </Typography>
-                        </CardContent>
-                        <CardActions disableSpacing>
-                            <IconButton aria-label="add to favorites">
-                                <FavoriteIcon className="favico" />
-                            </IconButton>
-                            <Badge badgeContent={`${item.discount}% off`} color="success">
-                                <LocalOfferIcon badge />
-                            </Badge>
-                            <ColorButton variant="contained" endIcon={<AddShoppingCartIcon />} >Add to cart</ColorButton>
-                            <ExpandMore
-                                expand={expanded}
-                                onClick={handleExpandClick}
-                                aria-expanded={expanded}
-                                aria-label="show more"
-                            >
-                                <ExpandMoreIcon />
-                            </ExpandMore>
-                        </CardActions>
-                        <Collapse in={expanded} timeout="auto" unmountOnExit>
-                            <CardContent>
-                                <Typography paragraph>Quantity:    <b>{`${item.quantity}`}</b> pieces are available</Typography>
-                                <Typography paragraph>Availability:    <b>{`${item.isAvailable ? 'inStock' : 'outOfStock'}`}</b></Typography>
-                                <Typography paragraph>Price:    <b>{`${item.price}`}</b>./only</Typography>
-                                <Typography paragraph>Discount:    <b>{`${item.discount}`}</b>%OFF</Typography>
-                                <Typography paragraph><br />Reviews</Typography>
-                                <Rating name="hover-feedback" value={item.reviews} precision={0.5} readOnly emptyIcon={<StarIcon style={{ opacity: 1 }} fontSize="inherit" />} />
-                            </CardContent>
-                        </Collapse>
-                    </Card>
-                ))}
-            </div>
-
-        </>
-    );
-
+// Define the props interface
+interface AllItemsProps {
+    items: Item[];
 }
 
-export default AllItems
+// Define the AllItems component using traditional JavaScript function style
+function AllItems({ items }: AllItemsProps) {
+    const isdelete = useSelector((state: RootState) => state.items.isdelete);
+    const isUpdate = useSelector((state: RootState) => state.items.isUpdate);
+
+    console.log(isUpdate);
+
+    const dispatch = useDispatch();
+    const [expanded, setExpanded] = React.useState<number | null>(null);
+
+    const handleExpandClick = (index: number) => {
+        setExpanded(expanded === index ? null : index);
+    };
+
+    function Deletion(id: string) {
+        dispatch(DeleteItem(id));
+    }
+
+    return (
+        <div className="itemContainer">
+            {items.map((item, index) => (
+                <Card className="item-basic" key={index} sx={{ maxWidth: 280, backgroundColor: 'grey', backdropFilter: 'blur(10px)', boxShadow: '0 4px 8px rgba(0, 0, 0, 1)', borderRadius: 2, border: '1px solid rgba(255, 255, 255, 0.2)' }}  >
+                    <CardHeader
+                        avatar={
+                            <Avatar sx={{ bgcolor: red[400] }} aria-label="Shoes">
+                                {`${item.company.charAt(0)}`}
+                            </Avatar>
+                        }
+                        action={
+                            <>
+                                {isdelete ? (
+                                    <IconButton aria-label="delete" onClick={() => { Deletion(item.id) }}>
+                                        <DeleteIcon style={{ color: 'red' }} />
+                                    </IconButton>
+                                ) : (
+                                    <IconButton aria-label="settings">
+                                        <MoreVertIcon />
+                                    </IconButton>
+                                )}
+                            </>
+                        }
+                        title={`${item.name}`}
+                        subheader={`${item.company}`}
+                    />
+                    <CardMedia
+                        component="img"
+                        height="150"
+                        image={`${shoes}`}
+                        alt="shoes"
+                    />
+                    <CardContent>
+                        <Typography variant="body2" color="text.secondary">
+                            {`${item.description}`}
+                        </Typography>
+                    </CardContent>
+                    <CardActions disableSpacing>
+                        <IconButton aria-label="add to favorites">
+                            <FavoriteIcon className="favico" />
+                        </IconButton>
+                        <Badge badgeContent={`${item.discount}% off`} color="success">
+                            <LocalOfferIcon />
+                        </Badge>
+                        <ColorButton variant="contained" endIcon={!isUpdate ? <AddShoppingCartIcon /> : ""} >{!isUpdate ? "Add to cart" : "Update"}</ColorButton>
+                        <ExpandMore
+                            expand={expanded === index}
+                            onClick={() => handleExpandClick(index)}
+                            aria-expanded={expanded === index}
+                            aria-label="show more"
+                        >
+                            <ExpandMoreIcon />
+                        </ExpandMore>
+                    </CardActions>
+                    <Collapse in={expanded === index} timeout="auto" unmountOnExit>
+                        <CardContent>
+                            <Typography paragraph>Quantity: <b>{`${item.quantity}`}</b> pieces are available</Typography>
+                            <Typography paragraph>Availability: <b>{`${item.isAvailable ? 'inStock' : 'outOfStock'}`}</b></Typography>
+                            <Typography paragraph>Price: <b>{`${item.price}`}</b>./only</Typography>
+                            <Typography paragraph>Discount: <b>{`${item.discount}`}</b>%OFF</Typography>
+                            <Typography paragraph><br />Reviews</Typography>
+                            <Rating name="hover-feedback" value={Number(item.reviews)} precision={0.5} readOnly emptyIcon={<StarIcon style={{ opacity: 1 }} fontSize="inherit" />} />
+                        </CardContent>
+                    </Collapse>
+                </Card>
+            ))}
+        </div>
+    );
+}
+
+export default AllItems;
