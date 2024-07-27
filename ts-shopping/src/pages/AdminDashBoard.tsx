@@ -23,8 +23,9 @@ import ViewListIcon from '@mui/icons-material/ViewList';
 import CreateNewFolderIcon from '@mui/icons-material/CreateNewFolder';
 import EventBusyIcon from '@mui/icons-material/EventBusy';
 import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
-import Welcome from '../components/AdminDashboardComponents/Welcome.tsx'
+import WelcomeAdmin from '../components/AdminDashboardComponents/WelcomeAdmin.tsx'
 import AddItemToCollection from '../components/AdminDashboardComponents/AddItemToCollection.tsx'
+import DeleteItemFromCollection from '../components/AdminDashboardComponents/DeleteItemFromCollection.tsx';
 
 const drawerWidth = 240;
 
@@ -97,9 +98,56 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
+
 export default function AdminDashBoard() {
   document.body.style.backgroundColor = "black";
 
+  //Sates for conditional rendering of components
+  const [Welcome, setWelcome] = React.useState(true) //1
+  const [Add, setAdd] = React.useState(false)//2
+  const [Delete, setDelete] = React.useState(false)//3
+  const [Update, setUpdate] = React.useState(false)//4
+  const [AddCatagory, setAddCatagory] = React.useState(false)//5
+  const [DeleteCatagory, setDeleteCatagory] = React.useState(false)//6
+  const [Logout, setLogout] = React.useState(false)//7
+
+  function setStates(currState){
+    setWelcome(false);
+    setAdd(false);
+    setDelete(false);
+    setUpdate(false);
+    setAddCatagory(false);
+    setDeleteCatagory(false);
+    setLogout(false);
+
+    currState(true);
+
+    console.log(Add);
+    
+  }
+
+  const renderList1Icon = (index:number) => {
+    switch (index) {
+      case 0:
+        return <AddCardIcon onClick={()=>{setStates(setAdd)}} />;
+      case 1:
+        return <DeleteIcon onClick={()=>{setStates(setDelete)}} />;
+      case 2:
+        return <UpdateIcon />;
+      default:
+        return <ViewListIcon />;
+    }
+  };
+  const renderList2Icon = (index:number) => {
+    switch (index) {
+      case 0:
+        return <CreateNewFolderIcon  />;
+      case 1:
+        return <EventBusyIcon />;
+      case 2:
+        return <LogoutRoundedIcon />;
+    }
+  };
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -149,6 +197,7 @@ export default function AdminDashBoard() {
                   justifyContent: open ? 'initial' : 'center',
                   px: 2.5,
                 }}
+
               >
                 <ListItemIcon
                   sx={{
@@ -157,7 +206,7 @@ export default function AdminDashBoard() {
                     justifyContent: 'center',
                   }}
                 >
-                  {index === 0 ? <AddCardIcon /> : index === 1 ?  <DeleteIcon  />:index === 2 ? <UpdateIcon/> : <ViewListIcon/>}
+                  {renderList1Icon(index)}
                 </ListItemIcon>
                 <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
@@ -182,7 +231,7 @@ export default function AdminDashBoard() {
                     justifyContent: 'center',
                   }}
                 >
-                  {index === 0 ? <CreateNewFolderIcon /> : index === 1 ?  <EventBusyIcon  />:<LogoutRoundedIcon/>}
+                  {renderList2Icon(index)}
                   </ListItemIcon>
                 <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
@@ -193,8 +242,9 @@ export default function AdminDashBoard() {
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
        <>
-        {/* <Welcome /> */}
-        <AddItemToCollection />
+        {Welcome && <WelcomeAdmin />}
+        {Add && <AddItemToCollection />}
+        {Delete && <DeleteItemFromCollection/>}
        </>
       </Box>
     </Box>

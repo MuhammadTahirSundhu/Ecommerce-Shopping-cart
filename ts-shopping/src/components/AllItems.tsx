@@ -26,6 +26,8 @@ import StarIcon from '@mui/icons-material/Star';
 import shoes from '../assets/shoes.jpg'
 import DeleteIcon from '@mui/icons-material/Delete';
 import { DeleteItem, UpdateItem } from '../features/itemSlice';
+import AlertUI from '@mui/material/Alert';
+import Alert from './Alert';
 
 const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
     color: theme.palette.getContrastText(purple[500]),
@@ -62,7 +64,7 @@ interface Item {
     company: string;
     reviews?: string;
     img: string;
-  }
+}
 
 // Define the props interface
 interface AllItemsProps {
@@ -73,6 +75,7 @@ interface AllItemsProps {
 function AllItems({ items }: AllItemsProps) {
     const isdelete = useSelector((state: RootState) => state.items.isdelete);
     const isUpdate = useSelector((state: RootState) => state.items.isUpdate);
+    const [showAlert, setShowAlert] = React.useState(false);
 
     console.log(isUpdate);
 
@@ -85,75 +88,82 @@ function AllItems({ items }: AllItemsProps) {
 
     function Deletion(id: string) {
         dispatch(DeleteItem(id));
+        setShowAlert(true);
+        setTimeout(() => setShowAlert(false), 3000);
     }
 
     return (
-        <div className="itemContainer">
-            {items.map((item, index) => (
-                <Card className="item-basic" key={index} sx={{ maxWidth: 280, backgroundColor: 'grey', backdropFilter: 'blur(10px)', boxShadow: '0 4px 8px rgba(0, 0, 0, 1)', borderRadius: 2, border: '1px solid rgba(255, 255, 255, 0.2)' }}  >
-                    <CardHeader
-                        avatar={
-                            <Avatar sx={{ bgcolor: red[400] }} aria-label="Shoes">
-                                {`${item.company.charAt(0)}`}
-                            </Avatar>
-                        }
-                        action={
-                            <>
-                                {isdelete ? (
-                                    <IconButton aria-label="delete" onClick={() => { Deletion(item.id) }}>
-                                        <DeleteIcon style={{ color: 'red' }} />
-                                    </IconButton>
-                                ) : (
-                                    <IconButton aria-label="settings">
-                                        <MoreVertIcon />
-                                    </IconButton>
-                                )}
-                            </>
-                        }
-                        title={`${item.name}`}
-                        subheader={`${item.company}`}
-                    />
-                    <CardMedia
-                        component="img"
-                        height="150"
-                        image={`${shoes}`}
-                        alt="shoes"
-                    />
-                    <CardContent>
-                        <Typography variant="body2" color="text.secondary">
-                            {`${item.description}`}
-                        </Typography>
-                    </CardContent>
-                    <CardActions disableSpacing>
-                        <IconButton aria-label="add to favorites">
-                            <FavoriteIcon className="favico" />
-                        </IconButton>
-                        <Badge badgeContent={`${item.discount}% off`} color="success">
-                            <LocalOfferIcon />
-                        </Badge>
-                        <ColorButton variant="contained" endIcon={!isUpdate ? <AddShoppingCartIcon /> : ""} >{!isUpdate ? "Add to cart" : "Update"}</ColorButton>
-                        <ExpandMore
-                            expand={expanded === index}
-                            onClick={() => handleExpandClick(index)}
-                            aria-expanded={expanded === index}
-                            aria-label="show more"
-                        >
-                            <ExpandMoreIcon />
-                        </ExpandMore>
-                    </CardActions>
-                    <Collapse in={expanded === index} timeout="auto" unmountOnExit>
+        <>
+            <div>
+                {showAlert && <Alert Description="Item is Successfully Deleted!!!" />}
+            </div>
+            <div className="itemContainer">
+                {items.map((item, index) => (
+                    <Card className="item-basic" key={index} sx={{ maxWidth: 280, backgroundColor: 'grey', backdropFilter: 'blur(10px)', boxShadow: '0 4px 8px rgba(0, 0, 0, 1)', borderRadius: 2, border: '1px solid rgba(255, 255, 255, 0.2)' }}  >
+                        <CardHeader
+                            avatar={
+                                <Avatar sx={{ bgcolor: red[400] }} aria-label="Shoes">
+                                    {`${item.company.charAt(0)}`}
+                                </Avatar>
+                            }
+                            action={
+                                <>
+                                    {isdelete ? (
+                                        <IconButton aria-label="delete" onClick={() => { Deletion(item.id) }}>
+                                            <DeleteIcon style={{ color: 'red' }} />
+                                        </IconButton>
+                                    ) : (
+                                        <IconButton aria-label="settings">
+                                            <MoreVertIcon />
+                                        </IconButton>
+                                    )}
+                                </>
+                            }
+                            title={`${item.name}`}
+                            subheader={`${item.company}`}
+                        />
+                        <CardMedia
+                            component="img"
+                            height="150"
+                            image={`${shoes}`}
+                            alt="shoes"
+                        />
                         <CardContent>
-                            <Typography paragraph>Quantity: <b>{`${item.quantity}`}</b> pieces are available</Typography>
-                            <Typography paragraph>Availability: <b>{`${item.isAvailable ? 'inStock' : 'outOfStock'}`}</b></Typography>
-                            <Typography paragraph>Price: <b>{`${item.price}`}</b>./only</Typography>
-                            <Typography paragraph>Discount: <b>{`${item.discount}`}</b>%OFF</Typography>
-                            <Typography paragraph><br />Reviews</Typography>
-                            <Rating name="hover-feedback" value={Number(item.reviews)} precision={0.5} readOnly emptyIcon={<StarIcon style={{ opacity: 1 }} fontSize="inherit" />} />
+                            <Typography variant="body2" color="text.secondary">
+                                {`${item.description}`}
+                            </Typography>
                         </CardContent>
-                    </Collapse>
-                </Card>
-            ))}
-        </div>
+                        <CardActions disableSpacing>
+                            <IconButton aria-label="add to favorites">
+                                <FavoriteIcon className="favico" />
+                            </IconButton>
+                            <Badge badgeContent={`${item.discount}% off`} color="success">
+                                <LocalOfferIcon />
+                            </Badge>
+                            <ColorButton variant="contained" endIcon={!isUpdate ? <AddShoppingCartIcon /> : ""} >{!isUpdate ? "Add to cart" : "Update"}</ColorButton>
+                            <ExpandMore
+                                expand={expanded === index}
+                                onClick={() => handleExpandClick(index)}
+                                aria-expanded={expanded === index}
+                                aria-label="show more"
+                            >
+                                <ExpandMoreIcon />
+                            </ExpandMore>
+                        </CardActions>
+                        <Collapse in={expanded === index} timeout="auto" unmountOnExit>
+                            <CardContent>
+                                <Typography paragraph>Quantity: <b>{`${item.quantity}`}</b> pieces are available</Typography>
+                                <Typography paragraph>Availability: <b>{`${item.isAvailable ? 'inStock' : 'outOfStock'}`}</b></Typography>
+                                <Typography paragraph>Price: <b>{`${item.price}`}</b>./only</Typography>
+                                <Typography paragraph>Discount: <b>{`${item.discount}`}</b>%OFF</Typography>
+                                <Typography paragraph><br />Reviews</Typography>
+                                <Rating name="hover-feedback" value={Number(item.reviews)} precision={0.5} readOnly emptyIcon={<StarIcon style={{ opacity: 1 }} fontSize="inherit" />} />
+                            </CardContent>
+                        </Collapse>
+                    </Card>
+                ))}
+            </div>
+        </>
     );
 }
 

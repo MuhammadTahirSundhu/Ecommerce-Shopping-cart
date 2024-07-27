@@ -29,8 +29,9 @@ interface Item {
 }
 
 function AddItemToCollection() {
-
   const dispatch = useDispatch();
+  dispatch(setIsdelete(false));
+  dispatch(setIsUpdate(false));
   const items = useSelector((state: RootState) => state.items.items);
 
 
