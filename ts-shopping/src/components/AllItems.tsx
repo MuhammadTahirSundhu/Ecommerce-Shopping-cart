@@ -16,7 +16,6 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Button, { ButtonProps } from '@mui/material/Button';
 import { purple } from '@mui/material/colors';
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import Badge from '@mui/material/Badge';
 import { useDispatch, useSelector } from 'react-redux';
@@ -28,6 +27,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { DeleteItem, UpdateItem } from '../features/itemSlice';
 import AlertUI from '@mui/material/Alert';
 import Alert from './Alert';
+import { ContextStates } from './UseContextStates';
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 const ColorButton = styled(Button)<ButtonProps>(({ theme }) => ({
     color: theme.palette.getContrastText(purple[500]),
@@ -73,11 +74,12 @@ interface AllItemsProps {
 
 // Define the AllItems component using traditional JavaScript function style
 function AllItems({ items }: AllItemsProps) {
+
+    const UpdateContext = React.useContext(ContextStates);
+    
     const isdelete = useSelector((state: RootState) => state.items.isdelete);
     const isUpdate = useSelector((state: RootState) => state.items.isUpdate);
     const [showAlert, setShowAlert] = React.useState(false);
-
-    console.log(isUpdate);
 
     const dispatch = useDispatch();
     const [expanded, setExpanded] = React.useState<number | null>(null);
@@ -85,6 +87,18 @@ function AllItems({ items }: AllItemsProps) {
     const handleExpandClick = (index: number) => {
         setExpanded(expanded === index ? null : index);
     };
+
+    const handleUpdateClick = (index: number) => {        
+        if(isUpdate && UpdateContext){
+            UpdateContext.setUpdateIndex(index);
+        }
+        else{
+            if(UpdateContext){
+                UpdateContext.setUpdateIndex(UpdateContext.updateIndex);
+            }
+        }
+    };
+    
 
     function Deletion(id: string) {
         dispatch(DeleteItem(id));
@@ -140,7 +154,7 @@ function AllItems({ items }: AllItemsProps) {
                             <Badge badgeContent={`${item.discount}% off`} color="success">
                                 <LocalOfferIcon />
                             </Badge>
-                            <ColorButton variant="contained" endIcon={!isUpdate ? <AddShoppingCartIcon /> : ""} >{!isUpdate ? "Add to cart" : "Update"}</ColorButton>
+                            <ColorButton variant="contained" endIcon={!isUpdate ? <AddShoppingCartIcon /> : ""} onClick={()=>{handleUpdateClick(index)}}>{!isUpdate ? "Add to cart" : "Update"}</ColorButton>
                             <ExpandMore
                                 expand={expanded === index}
                                 onClick={() => handleExpandClick(index)}

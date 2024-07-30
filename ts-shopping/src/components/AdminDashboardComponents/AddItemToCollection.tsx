@@ -11,6 +11,8 @@ import {
   Box,
   Button,
 } from "@mui/material";
+import AllItems from "../AllItems";
+import Alert from "../Alert";
 
 
 
@@ -28,10 +30,13 @@ interface Item {
   img: string;
 }
 
-function AddItemToCollection() {
+type AddItemToCollectionProps = {
+  open: boolean;
+};
+
+function AddItemToCollection(props: AddItemToCollectionProps) {
+  const { open } = props;
   const dispatch = useDispatch();
-  dispatch(setIsdelete(false));
-  dispatch(setIsUpdate(false));
   const items = useSelector((state: RootState) => state.items.items);
 
 
@@ -45,16 +50,42 @@ function AddItemToCollection() {
   const [Company, setCompany] = React.useState('');
   const [Review, setReview] = React.useState('');
   const [Img, setImg] = React.useState('');
+  const [fieldWidth, setfieldWidth] = React.useState("40ch");
+  const [AddItemAlert,setAddItemAlert] = React.useState(false);
 
-  function additionofItem() {
+  React.useEffect(() => {
+    open ? setfieldWidth("40ch") : setfieldWidth("50ch")
     dispatch(setIsdelete(false));
     dispatch(setIsUpdate(false));
+  
+  }, [open,dispatch])
+
+  const previewItem: Item = {
+    id: nanoid(),
+    name: Name,
+    description: Description,
+    catagory: Catagory,
+    price: Price,
+    quantity: Quantity,
+    isAvailable: true,
+    discount: Discount,
+    company: Company,
+    reviews: Review,
+    img: Img
+  };
+  const prevItem: Item[] = [];
+  prevItem.push(previewItem);
+
+  // console.log(fieldWidth);
+  function additionofItem() {
+ 
+
 
     const newItem: Item = {
       id: nanoid(),
       name: Name,
       description: Description,
-      catagory: Catagory,
+      catagory: Catagory.toLowerCase(),
       price: Price,
       quantity: Quantity,
       isAvailable: true,
@@ -64,7 +95,11 @@ function AddItemToCollection() {
       img: Img
     };
 
+
+
     dispatch(AddItem(newItem));
+    setAddItemAlert(true);
+    setTimeout(() => setAddItemAlert(false), 3000);
 
     setName('');
     setDescription('');
@@ -76,115 +111,126 @@ function AddItemToCollection() {
     setReview('');
     setImg('');
 
-    console.log(items);
-
   }
+
 
   return (
     <>
-      <div className="container">
-        <h1>Add Item Details</h1>
-        <Box
-          component="form"
-          style={{ display: "flex", justifyContent: "space-around" }}
-          sx={{
-            "& .MuiTextField-root": {
-              mx: 5,
-              width: "50ch",
-            },
-          }}
-          noValidate
-          autoComplete="off"
-        >
+          {AddItemAlert && <Alert Description={"Item Added Successfully"}/>}
+
+      <div className="ParentContainer">
+        <div className="container">
           <div>
-            <TextField
-              required
-              id="name"
-              label="Item Name"
-              variant="filled"
-              className="inputField"
-              sx={{ m: 1 }}
-              value={Name}
-              onChange={(e) => { setName(e.target.value) }}
-            />
-            <TextField
-              required
-              id="catagory"
-              label="Catagory"
-              variant="filled"
-              sx={{ m: 1 }}
-              value={Catagory}
-              onChange={(e) => { setCatagory(e.target.value) }}
-            />
-            <TextField
-              required
-              id="company"
-              label="Company"
-              variant="filled"
-              sx={{ m: 1 }}
-              value={Company}
-              onChange={(e) => { setCompany(e.target.value) }}
-            />
-            <TextField
-              required
-              id="price"
-              label="Price"
-              variant="filled"
-              sx={{ m: 1 }}
-              value={Price}
-              onChange={(e) => { setPrice(e.target.value) }}
-            />
-            <TextField
-              required
-              id="quantity"
-              label="Quantity"
-              variant="filled"
-              sx={{ m: 1 }}
-              value={Quantity}
-              onChange={(e) => { setQuantity(e.target.value) }}
-            />
-            <TextField
-              required
-              id="discount"
-              label="Discount %"
-              variant="filled"
-              sx={{ m: 1 }}
-              value={Discount}
-              onChange={(e) => { setDiscount(e.target.value) }}
-            />
-            <TextField
-              required
-              id="review"
-              label="Review (?/5)"
-              variant="filled"
-              sx={{ m: 1 }}
-              value={Review}
-              onChange={(e) => { setReview(e.target.value) }}
-            />
-            <TextField
-              required
-              id="img"
-              label="Img path"
-              variant="filled"
-              sx={{ m: 1 }}
-              value={Img}
-              onChange={(e) => { setImg(e.target.value) }}
-            />
-            <TextField
-              id="description"
-              label="Description"
-              multiline
-              rows={2}
-              variant="filled"
-              sx={{ m: 1 }}
-              value={Description}
-              onChange={(e) => { setDescription(e.target.value) }}
-            />
+
+            <h1>Add Item Details</h1>
+            <Box
+              component="form"
+              style={{ display: "flex", justifyContent: "space-around" }}
+              sx={{
+                "& .MuiTextField-root": {
+                  mx: 1,
+                  width: fieldWidth,
+                },
+              }}
+              noValidate
+              autoComplete="off"
+            >
+              <div>
+                <TextField
+                  required
+                  id="name"
+                  label="Item Name"
+                  variant="filled"
+                  className="inputField"
+                  sx={{ m: 1 }}
+                  value={Name}
+                  onChange={(e) => { setName(e.target.value) }}
+                />
+                <TextField
+                  required
+                  id="catagory"
+                  label="Catagory"
+                  variant="filled"
+                  sx={{ m: 1 }}
+                  value={Catagory}
+                  onChange={(e) => { setCatagory(e.target.value) }}
+                />
+                <TextField
+                  required
+                  id="company"
+                  label="Company"
+                  variant="filled"
+                  sx={{ m: 1 }}
+                  value={Company}
+                  onChange={(e) => { setCompany(e.target.value) }}
+                />
+                <TextField
+                  required
+                  id="price"
+                  label="Price"
+                  variant="filled"
+                  sx={{ m: 1 }}
+                  value={Price}
+                  onChange={(e) => { setPrice(e.target.value) }}
+                />
+                <TextField
+                  required
+                  id="quantity"
+                  label="Quantity"
+                  variant="filled"
+                  sx={{ m: 1 }}
+                  value={Quantity}
+                  onChange={(e) => { setQuantity(e.target.value) }}
+                />
+                <TextField
+                  required
+                  id="discount"
+                  label="Discount %"
+                  variant="filled"
+                  sx={{ m: 1 }}
+                  value={Discount}
+                  onChange={(e) => { setDiscount(e.target.value) }}
+                />
+                <TextField
+                  required
+                  id="review"
+                  label="Review (?/5)"
+                  variant="filled"
+                  sx={{ m: 1 }}
+                  value={Review}
+                  onChange={(e) => { setReview(e.target.value) }}
+                />
+                <TextField
+                  required
+                  id="img"
+                  label="Img path"
+                  variant="filled"
+                  sx={{ m: 1 }}
+                  value={Img}
+                  onChange={(e) => { setImg(e.target.value) }}
+                />
+                <TextField
+                  id="description"
+                  label="Description"
+                  multiline
+                  rows={2}
+                  variant="filled"
+                  sx={{ m: 1 }}
+                  value={Description}
+                  onChange={(e) => { setDescription(e.target.value) }}
+                />
+              </div>
+            </Box>
+            <Button variant="contained" endIcon={<SendIcon />} onClick={additionofItem}>
+              Add item
+            </Button>
           </div>
-        </Box>
-        <Button variant="contained" endIcon={<SendIcon />} onClick={additionofItem}>
-          Add item
-        </Button>
+
+        </div>
+        <div className="PreviewContainer">
+          <h1> Preview </h1>
+          <AllItems items={prevItem} />
+        </div>
       </div>
     </>
   );

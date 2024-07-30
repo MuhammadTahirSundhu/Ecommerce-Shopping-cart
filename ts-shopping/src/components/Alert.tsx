@@ -1,17 +1,20 @@
-import React from 'react'
-import AlertTitle from '@mui/material/AlertTitle';
-import AlertUI from '@mui/material/Alert'
-import { Description } from '@mui/icons-material';
+import * as React from "react";
+import AlertUI from "@mui/material/Alert";
+import AlertTitle from "@mui/material/AlertTitle";
 
-function Alert({ Description: string }) {
-    return (
-        <>
-            <AlertUI severity="success" style={{position:"sticky"}}>
-                <AlertTitle>Item Deleted</AlertTitle>
-                {`${Description}`}
-            </AlertUI>
-        </>
-    );
+interface AlertProps {
+  Description: string;
 }
 
-export default Alert
+const Alert: React.FC<AlertProps> = ({ Description }) => {
+  return (
+    <>
+      <AlertUI severity="success" style={{ position: "sticky", top: "70px" }}>
+        <AlertTitle>Success</AlertTitle>
+        {`${Description}`}
+      </AlertUI>
+    </>
+  );
+};
+
+export default Alert;

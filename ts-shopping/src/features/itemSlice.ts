@@ -41,6 +41,8 @@ const itemSlice = createSlice({
       const index = state.items.findIndex(item => item.id === action.payload.id);
       if (index !== -1) {
         state.items[index] = action.payload;
+        console.log("item updated");
+        
       }
     },
     setIsdelete(state,action: PayloadAction<boolean>){

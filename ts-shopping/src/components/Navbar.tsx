@@ -17,6 +17,7 @@ import MoreIcon from '@mui/icons-material/MoreVert';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
 import Button from '@mui/material/Button';
+import './Navbar.css'
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   width: 62,
@@ -77,7 +78,7 @@ const Search = styled('div')(({ theme }) => ({
   width: '100%',
   [theme.breakpoints.up('sm')]: {
     marginLeft: theme.spacing(3),
-    width: 'auto',
+    width: '70%',
   },
 }));
 
@@ -206,7 +207,6 @@ export default function PrimarySearchAppBar() {
               aria-label="open drawer"
               sx={{ mr: 2 }}
               onClick={handleProfileMenuOpen}
-
             >
               <MenuIcon />
             </IconButton>
@@ -226,7 +226,6 @@ export default function PrimarySearchAppBar() {
             </Search>
           </Box>
           <Box>
-
             <Box sx={{ flexGrow: 1 }} />
             <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
               <FormControlLabel
@@ -248,9 +247,7 @@ export default function PrimarySearchAppBar() {
                   <AddShoppingCartIcon />
                 </Badge>
               </IconButton>
-              <IconButton>
-                <Button color='success' variant="contained" endIcon={<Badge badgeContent={1} color="error"> <AddShoppingCartIcon />  </Badge>}> My Cart  </Button>
-              </IconButton>
+              <Button color='success' variant="contained" endIcon={<Badge badgeContent={1} color="error"> <AddShoppingCartIcon />  </Badge>}> My Cart  </Button>
             </Box>
             <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
               <IconButton

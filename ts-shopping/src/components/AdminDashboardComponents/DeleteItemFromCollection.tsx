@@ -4,6 +4,8 @@ import { setIsdelete, setIsUpdate } from '../../features/itemSlice';
 import { RootState } from '../../store/store';
 import './AddItemToCollection.css'
 import AllItems from '../AllItems';
+import SwipeSlide from '../SwipeSlideItems';
+import ItemCatagories from './ItemCatagories';
 
 
 // import React from 'react';
@@ -83,14 +85,12 @@ function DeleteItemFromCollection() {
       const items = useSelector((state:RootState)=>state.items.items);
         useEffect(()=>{
             dispatch(setIsUpdate(false));
-            dispatch(setIsdelete(true));
-            console.log(items);
-            
+            dispatch(setIsdelete(true));            
         },[])
   return (
     <>
     <div className="deleteContainer">
-     <AllItems items={items}/>
+     <ItemCatagories/>
     </div>
     </>
   )

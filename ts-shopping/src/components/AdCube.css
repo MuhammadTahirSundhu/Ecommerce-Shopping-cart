@@ -1,0 +1,24 @@
+
+.adcube {
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    left: 50%;
+    top: 70%;
+    margin-left: -150px;
+    margin-top: -150px;
+    border-radius: 10px;
+    perspective: 2000px;
+    perspective-origin: 50% 50%;
+}
+  
+  .adcubeslide {
+    background-position: center;
+    background-size: cover;
+  }
+  
+  .adcubeslideimg {
+    display: block;
+    width: 100%;
+  }
+  

@@ -26,6 +26,8 @@ import LogoutRoundedIcon from '@mui/icons-material/LogoutRounded';
 import WelcomeAdmin from '../components/AdminDashboardComponents/WelcomeAdmin.tsx'
 import AddItemToCollection from '../components/AdminDashboardComponents/AddItemToCollection.tsx'
 import DeleteItemFromCollection from '../components/AdminDashboardComponents/DeleteItemFromCollection.tsx';
+import UpdateItemInYourCollection from '../components/AdminDashboardComponents/UpdateItemInYourCollection.tsx';
+import ItemCatagories from '../components/AdminDashboardComponents/ItemCatagories.tsx';
 
 const drawerWidth = 240;
 
@@ -107,9 +109,10 @@ export default function AdminDashBoard() {
   const [Add, setAdd] = React.useState(false)//2
   const [Delete, setDelete] = React.useState(false)//3
   const [Update, setUpdate] = React.useState(false)//4
-  const [AddCatagory, setAddCatagory] = React.useState(false)//5
-  const [DeleteCatagory, setDeleteCatagory] = React.useState(false)//6
-  const [Logout, setLogout] = React.useState(false)//7
+  const [Catagory, setCatagory] = React.useState(false)//5
+  const [AddCatagory, setAddCatagory] = React.useState(false)//6
+  const [DeleteCatagory, setDeleteCatagory] = React.useState(false)//7
+  const [Logout, setLogout] = React.useState(false)//8
 
   function setStates(currState){
     setWelcome(false);
@@ -119,10 +122,10 @@ export default function AdminDashBoard() {
     setAddCatagory(false);
     setDeleteCatagory(false);
     setLogout(false);
-
+    setCatagory(false);
     currState(true);
 
-    console.log(Add);
+    // console.log(Update);
     
   }
 
@@ -133,9 +136,9 @@ export default function AdminDashBoard() {
       case 1:
         return <DeleteIcon onClick={()=>{setStates(setDelete)}} />;
       case 2:
-        return <UpdateIcon />;
+        return <UpdateIcon onClick={()=>{setStates(setUpdate)}}/>;
       default:
-        return <ViewListIcon />;
+        return <ViewListIcon onClick={()=>{setStates(setCatagory)}}/>;
     }
   };
   const renderList2Icon = (index:number) => {
@@ -153,6 +156,7 @@ export default function AdminDashBoard() {
 
   const handleDrawerOpen = () => {
     setOpen(true);
+    
   };
 
   const handleDrawerClose = () => {
@@ -243,8 +247,10 @@ export default function AdminDashBoard() {
         <DrawerHeader />
        <>
         {Welcome && <WelcomeAdmin />}
-        {Add && <AddItemToCollection />}
+        {Add && <AddItemToCollection open={open} />}
         {Delete && <DeleteItemFromCollection/>}
+        {Update && <UpdateItemInYourCollection/>}
+        {Catagory && <ItemCatagories/>}
        </>
       </Box>
     </Box>
