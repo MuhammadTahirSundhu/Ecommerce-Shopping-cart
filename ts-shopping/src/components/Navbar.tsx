@@ -211,7 +211,16 @@ export default function PrimarySearchAppBar() {
               <MenuIcon />
             </IconButton>
             <IconButton color="inherit">
-              <Typography sx={{ margin: "5px" }}> <strong>TS SHOPPING</strong></Typography>
+              <Typography sx={{ margin: "5px" }}> <strong>TS Collections</strong></Typography>
+            </IconButton>
+            <IconButton color="inherit">
+              <Typography sx={{ margin: "5px" }}> <strong>Shop Now</strong></Typography>
+            </IconButton>
+            <IconButton color="inherit">
+              <Typography sx={{ margin: "5px" }}> <strong>About</strong></Typography>
+            </IconButton>
+            <IconButton color="inherit">
+              <Typography sx={{ margin: "5px" }}> <strong>Contact</strong></Typography>
             </IconButton>
           </Box>
           <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: 'center' }}>
@@ -247,7 +256,7 @@ export default function PrimarySearchAppBar() {
                   <AddShoppingCartIcon />
                 </Badge>
               </IconButton>
-              <Button color='success' variant="contained" endIcon={<Badge badgeContent={1} color="error"> <AddShoppingCartIcon />  </Badge>}> My Cart  </Button>
+              <Button color='success' variant="contained" endIcon={<Badge badgeContent={1} color="error"> <AddShoppingCartIcon />  </Badge>} sx={{ height: '35px', margin:"5px 5px 0px 0px"}}> My Cart  </Button>
             </Box>
             <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
               <IconButton

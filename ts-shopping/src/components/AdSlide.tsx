@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -6,37 +6,58 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import img1 from '../assets/1.png'
-import img2 from '../assets/2.png'
-import img3 from '../assets/3.png'
-import img4 from '../assets/4.png'
-import './AdSlide.css'
-// import required modules
+// Import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
-export default function App() {
-  return (
-    <>
-      <Swiper
-        spaceBetween={30}
-        centeredSlides={true}
-        autoplay={{
-          delay: 3000,
-          disableOnInteraction: false,
-        }}
-        pagination={{
-          clickable: true,
-        }}
-        navigation={true}
-        modules={[Autoplay, Pagination, Navigation]}
-        className="mySwiper"
-      >
-        <SwiperSlide className='adslide'><img className='adslide' src={img1}/></SwiperSlide>
-        <SwiperSlide className='adslide'><img className='adslide' src={img2}/></SwiperSlide>
-        <SwiperSlide className='adslide'><img className='adslide' src={img3}/></SwiperSlide>
-        <SwiperSlide className='adslide'><img className='adslide' src={img4}/></SwiperSlide>
-                     
-      </Swiper>
-    </>
-  );
+// Define the interface for the props
+interface AdSlideProps {
+  speed: number;
+  delay: number;
+  spaceBetween: number;
+  pagination: boolean;
+  navigation: boolean;
+  clickable: boolean;
+  imgArr: string[];
 }
+
+// Define default props
+const defaultProps: AdSlideProps = {
+  speed: 300,
+  delay: 3000,
+  spaceBetween: 30,
+  pagination: true,
+  navigation: true,
+  clickable: true,
+  imgArr: [],
+};
+
+// Functional component using the props interface
+const AdSlide: React.FC<{ attributes: AdSlideProps }> = ({ attributes = defaultProps }) => {
+  const { speed, delay, spaceBetween, pagination, navigation, clickable, imgArr } = attributes;
+
+  return (
+    <Swiper
+      spaceBetween={spaceBetween}
+      centeredSlides={true}
+      autoplay={{
+        delay: delay,
+        disableOnInteraction: false,
+      }}
+      speed={speed}
+      pagination={{
+        clickable: clickable,
+      }}
+      navigation={navigation}
+      modules={[Autoplay, Pagination, Navigation]}
+      className="mySwiper"
+    >
+      {imgArr.map((imgSrc, index) => (
+        <SwiperSlide key={index} className='adslide'>
+          <img className='adslide' src={imgSrc} alt={`Slide ${index}`} />
+        </SwiperSlide>
+      ))}
+    </Swiper>
+  );
+};
+
+export default AdSlide;

@@ -10,7 +10,7 @@ import 'swiper/css/pagination';
 import './AdCube.css';
 
 // Import required modules
-import { Autoplay,EffectCube, Pagination } from 'swiper/modules';
+import { Autoplay,EffectCube } from 'swiper/modules';
 
 function AdCube() {
   return (
@@ -18,9 +18,11 @@ function AdCube() {
       effect={'cube'}
       grabCursor={true}
       autoplay={{
-        delay: 3000,
+        delay: 0,
         disableOnInteraction: true,
       }}
+      speed={9000} // Slow down the transition speed (2 seconds for transition)
+
       cubeEffect={{
         shadow: true,
         slideShadows: true,
@@ -28,12 +30,11 @@ function AdCube() {
         shadowScale: 0.94,
       }}
       className="adcube"
-      pagination={true}
-      modules={[EffectCube, Pagination , Autoplay]}
+      modules={[EffectCube , Autoplay]}
     >
       <SwiperSlide className='adcubeslide'>
 
-        <img src="https://swiperjs.com/demos/images/nature-1.jpg" alt="Nature 1" className='adcubeslideimg' />
+        <img src="https://img.freepik.com/free-photo/adult-women-happy-shopping-together_23-2148385722.jpg?t=st=1722416357~exp=1722419957~hmac=bf94b58f2c447e6f4afae07316a47df655f7827ada331eefbebc6b056c4d2d13&w=826" alt="Nature 1" className='adcubeslideimg' />
       </SwiperSlide>
       <SwiperSlide className='adcubeslide'>
         <img src="https://swiperjs.com/demos/images/nature-2.jpg" alt="Nature 2" className='adcubeslideimg'/>

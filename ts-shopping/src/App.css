@@ -1,63 +1,141 @@
-/* App.css */
-.headerContainer {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    text-align: center;
-    flex-wrap: wrap;
-    flex-direction: column; /* Explicitly set flex direction to row */
-    border: 2px solid green;
-    background-image: url('./assets/homeSide.jpg');
-    background-size: cover;
-    background-attachment: fixed;
-    height: 100vh;
-    width: 100%;
-    color: white; /* Optional: to make the text readable over the background */
-  }
-  
-  .headerLeft {
-    width: 50%;
-    height: 100%;
-    border: 2px solid red;
-    margin: 2px;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .headerRight {
-    width: 40%;
-    height: 100%;
-    border: 2px solid red;
-    margin: 2px;
+/* Reset some basic styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+/* Ensure body has a fixed background image */
+body {
+  background-image: url('./assets/homeSide.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Keeps the background fixed while scrolling */
+  margin: 0;
+  padding: 0;
+}
+
+
+
+/* Header styling */
+.header {
+  display: flex;
+  flex-direction: row; /* Horizontal layout */
+  width: 100%;
+  min-height: 100vh; /* Ensure it covers the viewport height */
+  background-image: url('./assets/homeSide.jpg'); /* Same image for continuity */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+  text-align: center;
+  color: white;
+  margin-top: 50px;
+
+}
+
+/* Overlay to darken the background image */
+.outerLeftdiv{
+  width: 50%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.overlay {
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay for readability */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: 20px; /* Add padding for better text layout */
+  overflow: hidden; /* Prevent content overflow */
+  border-radius: 30px;
+  max-width: 450px;
+}
+
+.headerRight {
+  flex: 1; /* Allow the headerRight to take up available space */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/* Styling for the title */
+.header h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+/* Styling for the description paragraph */
+.description {
+  font-size: 1.25rem;
+  margin-bottom: 20px;
+  width: 100%; /* Ensure it takes the full width */
+  word-wrap: break-word; /* Ensure long words break to the next line */
+}
+
+/* Styling for the buttons */
+.header .btn {
+  padding: 10px 20px;
+  font-size: 1rem;
+  margin-top: 10%;
+}
+
+
+.brands{
+  width: 100%;
+  height : 100px;
+  display: flex;
+  margin-top: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Responsive styling */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center align items */
+  }
+.outerLeftdiv{
+  width: 100%;
+}
+  .overlay, .headerRight {
+    width: 100%; /* Ensure full width */
+    flex: none; /* Prevent flex grow/shrink */
   }
 
-  .level1Heading{
-    background: linear-gradient(to right, #121FCF 0%, #CF1512 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  
-    font-size: 350%;
-    font-weight: 700;
-    line-height: 1.2;
-    letter-spacing: 7px;
-    word-spacing: -0.4px;
-    text-decoration: none;
-    font-style: normal;
-    font-variant: normal;
-    text-transform: uppercase;
-    font-family: Tahoma, Geneva, sans-serif;
-    z-index: 1;
-    text-wrap: wrap;
+  .header h1 {
+    font-size: 2rem;
   }
-  
-  .LeftUp{
-    width: 100%;
-    height: 80%;
-    border: 2px solid Yellow;
+
+  .description {
+    font-size: 1rem;
+    padding: 0 10px; /* Add padding for better readability on small screens */
+    word-wrap: break-word; /* Ensure long words break to the next line */
   }
-  .LeftDown{
-    width: 100%;
-    height: 20%;
-    border: 2px solid rgb(4, 0, 255);
+
+  .header .btn {
+    font-size: 0.875rem;
+    padding: 8px 16px;
   }
+}

@@ -114,7 +114,7 @@ export default function AdminDashBoard() {
   const [DeleteCatagory, setDeleteCatagory] = React.useState(false)//7
   const [Logout, setLogout] = React.useState(false)//8
 
-  function setStates(currState){
+  function setStates(currState) {
     setWelcome(false);
     setAdd(false);
     setDelete(false);
@@ -126,25 +126,25 @@ export default function AdminDashBoard() {
     currState(true);
 
     // console.log(Update);
-    
+
   }
 
-  const renderList1Icon = (index:number) => {
+  const renderList1Icon = (index: number) => {
     switch (index) {
       case 0:
-        return <AddCardIcon onClick={()=>{setStates(setAdd)}} />;
+        return <AddCardIcon onClick={() => { setStates(setAdd) }} />;
       case 1:
-        return <DeleteIcon onClick={()=>{setStates(setDelete)}} />;
+        return <DeleteIcon onClick={() => { setStates(setDelete) }} />;
       case 2:
-        return <UpdateIcon onClick={()=>{setStates(setUpdate)}}/>;
+        return <UpdateIcon onClick={() => { setStates(setUpdate) }} />;
       default:
-        return <ViewListIcon onClick={()=>{setStates(setCatagory)}}/>;
+        return <ViewListIcon onClick={() => { setStates(setCatagory) }} />;
     }
   };
-  const renderList2Icon = (index:number) => {
+  const renderList2Icon = (index: number) => {
     switch (index) {
       case 0:
-        return <CreateNewFolderIcon  />;
+        return <CreateNewFolderIcon />;
       case 1:
         return <EventBusyIcon />;
       case 2:
@@ -156,7 +156,7 @@ export default function AdminDashBoard() {
 
   const handleDrawerOpen = () => {
     setOpen(true);
-    
+
   };
 
   const handleDrawerClose = () => {
@@ -236,7 +236,7 @@ export default function AdminDashBoard() {
                   }}
                 >
                   {renderList2Icon(index)}
-                  </ListItemIcon>
+                </ListItemIcon>
                 <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
             </ListItem>
@@ -245,13 +245,13 @@ export default function AdminDashBoard() {
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
-       <>
-        {Welcome && <WelcomeAdmin />}
-        {Add && <AddItemToCollection open={open} />}
-        {Delete && <DeleteItemFromCollection/>}
-        {Update && <UpdateItemInYourCollection/>}
-        {Catagory && <ItemCatagories/>}
-       </>
+        <>
+          {Welcome && <WelcomeAdmin />}
+          {Add && <AddItemToCollection open={open} />}
+          {Delete && <DeleteItemFromCollection />}
+          {Update && <UpdateItemInYourCollection />}
+          {Catagory && <ItemCatagories />}
+        </>
       </Box>
     </Box>
   );
