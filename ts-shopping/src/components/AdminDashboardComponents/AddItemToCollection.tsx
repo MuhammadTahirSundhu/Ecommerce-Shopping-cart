@@ -229,7 +229,9 @@ function AddItemToCollection(props: AddItemToCollectionProps) {
         </div>
         <div className="PreviewContainer">
           <h1> Preview </h1>
+          <div>
           <AllItems items={prevItem} />
+          </div>
         </div>
       </div>
     </>

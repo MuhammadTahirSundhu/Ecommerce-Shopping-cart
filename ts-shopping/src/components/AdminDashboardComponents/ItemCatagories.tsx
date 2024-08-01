@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AddItem, setIsdelete, setIsUpdate } from '../../features/itemSlice';
 import { RootState } from '../../store/store';
 import { nanoid } from '@reduxjs/toolkit';
-import AllItems from '../AllItems';
+import SwipeSlide from '../SwipeSlideItems';
 
 function ItemCatagories() {
 
@@ -35,7 +35,7 @@ function ItemCatagories() {
                 {uniqueArr.map((arr, index) => (
                     <div className="eachCatagory" key={index}>
                        <h2>{arr[0].catagory.toUpperCase()}</h2>
-                        <AllItems items={arr}/>
+                        <SwipeSlide items={arr}/>
                     </div>
                 ))}
                 

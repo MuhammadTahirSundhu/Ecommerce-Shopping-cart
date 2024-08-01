@@ -1,6 +1,6 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+import { Navigation, Pagination, Scrollbar, A11y, FreeMode } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -32,6 +32,7 @@ import { styled } from '@mui/material/styles';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import shoes from '../assets/shoes.jpg'
+import { ClassNames } from '@emotion/react';
 
 const ColorButton = styled(Button)(({ theme }) => ({
     color: theme.palette.getContrastText(purple[500]),
@@ -46,7 +47,6 @@ const ExpandMore = styled((props) => {
     return <IconButton {...other} />;
 })(({ theme, expand }) => ({
     transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
-    marginLeft: 'auto',
     transition: theme.transitions.create('transform', {
         duration: theme.transitions.duration.shortest,
     }),
@@ -102,18 +102,37 @@ function SwipeSlide({ items }: SwipeSlideProps) {
     return (
         <>
             <Swiper
-                modules={[Navigation, Pagination, Scrollbar, A11y]}
+                spaceBetween={0}
+                pagination={{
+                    clickable: true,
+                }}
+                freeMode={true}
                 navigation
-                pagination={{ clickable: true }}
-                scrollbar={{ draggable: true }}
-                spaceBetween={10}
-                slidesPerView={5} // Adjust as needed
-                style={{ width: '100%', height: '100%' }}
+                modules={[Pagination,Navigation,FreeMode]}
+                className="mySwiper swiperOut1"
+                breakpoints={{
+                    320: {
+                      slidesPerView: 2,
+                      spaceBetween: 10,
+                    },
+                    640: {
+                      slidesPerView: 4,
+                      spaceBetween: 20,
+                    },
+                    768: {
+                      slidesPerView: 5,
+                      spaceBetween: 20,
+                    },
+                    1024: {
+                      slidesPerView: 6,
+                      spaceBetween: 20,
+                    },
+                  }}
             >
                 {items.map((item, index) => (
-                    <SwiperSlide key={item.id}>
-                        <Card className="item-basic" sx={{ maxWidth: 280, backgroundColor: 'grey', backdropFilter: 'blur(10px)', boxShadow: '0 4px 8px rgba(0, 0, 0, 1)', borderRadius: 2, border: '1px solid rgba(255, 255, 255, 0.2)' }}>
-                            <CardHeader
+                    <SwiperSlide key={item.id} className='swiper-slideIn1'>
+                        <Card className="item-basic1"sx={{ color:"white",maxWidth: 280, background: 'rgba(104,107,166,0.5)', backdropFilter: 'blur(6px)', boxShadow: '0 3px 5px lightblue', borderRadius: 5, border: 'rgba(104,107,166,0.35)',  webkitBackdropFilter: 'blur(6px)' }}>
+                            <CardHeader style={{height:"50px", color:"white"}}
                                 avatar={
                                     <Avatar sx={{ bgcolor: red[400] }} aria-label="Shoes">
                                         {item.company.charAt(0)}
@@ -133,7 +152,7 @@ function SwipeSlide({ items }: SwipeSlideProps) {
                                     </>
                                 }
                                 title={item.name}
-                                subheader={item.company}
+                                subheader={<div style={{color:"white", fontSize:"80%"}}>{item.company}</div>}
                             />
                             <CardMedia
                                 component="img"
@@ -142,28 +161,31 @@ function SwipeSlide({ items }: SwipeSlideProps) {
                                 alt={item.name}
                             />
                             <CardContent>
-                                <Typography variant="body2" color="text.secondary">
+                                <Typography variant="body2" color="white">
                                     {item.description}
                                 </Typography>
                             </CardContent>
-                            <CardActions disableSpacing>
+                            <CardActions disableSpacing className='cardfooter'>
+                                <div className="addon1">
                                 <IconButton aria-label="add to favorites">
-                                    <FavoriteIcon />
+                                    <FavoriteIcon className='addonIcon' />
                                 </IconButton>
                                 <Badge badgeContent={`${item.discount}% off`} color="success">
                                     <LocalOfferIcon />
                                 </Badge>
-                                <ColorButton variant="contained" endIcon={!isUpdate ? <AddShoppingCartIcon /> : ""} onClick={() => handleUpdateClick(index)}>
-                                    {!isUpdate ? "Add to cart" : "Update"}
-                                </ColorButton>
                                 <ExpandMore
                                     expand={expanded === index}
                                     onClick={() => handleExpandClick(index)}
                                     aria-expanded={expanded === index}
                                     aria-label="show more"
                                 >
-                                    <ExpandMoreIcon />
+                                    <ExpandMoreIcon className='addonIcon' />
                                 </ExpandMore>
+                                </div>
+                                <ColorButton style={{width:"100%"}} variant="contained" endIcon={!isUpdate ? <AddShoppingCartIcon /> : ""} onClick={() => handleUpdateClick(index)}>
+                                    {!isUpdate ? "Buy" : "Update"}
+                                </ColorButton>
+                               
                             </CardActions>
                             <Collapse in={expanded === index} timeout="auto" unmountOnExit>
                                 <CardContent>

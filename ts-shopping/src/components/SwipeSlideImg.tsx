@@ -53,6 +53,24 @@ const SwipeSlideImg: React.FC<{ attributes?: SwipeSlideProps }> = ({ attributes 
       modules={[Autoplay, FreeMode, Pagination]}
       className="mySwiper swiperOut"
       style={{direction:`${direction}`}}
+      breakpoints={{
+        320: {
+          slidesPerView: 6,
+          spaceBetween: 10,
+        },
+        640: {
+          slidesPerView: 8,
+          spaceBetween: 20,
+        },
+        768: {
+          slidesPerView: 10,
+          spaceBetween: 30,
+        },
+        1024: {
+          slidesPerView: pageperview-2,
+          spaceBetween: 40,
+        },
+      }}
     >
       {imgArr.map((img, index) => (
         <SwiperSlide key={index} className='swiper-slideIn'>

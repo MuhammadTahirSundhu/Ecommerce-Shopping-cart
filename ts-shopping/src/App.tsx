@@ -46,7 +46,10 @@ import headimg4 from './assets/cubeImgs/4.jpg';
 import advedio from './assets/cubeImgs/ved.mp4';
 import SwipeSlide from './components/SwipeSlideItems';
 import ItemCatagories from './components/AdminDashboardComponents/ItemCatagories';
-
+import adimg1 from './assets/1.png'
+import adimg2 from './assets/2.png'
+import adimg3 from './assets/3.png'
+import adimg4 from './assets/4.png'
 interface AdSlideProps {
   speed: number;
   delay: number;
@@ -106,6 +109,7 @@ const App: React.FC = () => {
   const items = useSelector((state: RootState) => state.items.items);
   const imgArr = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12, img14, img15, img16, img17, img18, img19, img20, img21, img22, img23, img24, img26, img27, img28, img29, img30, img31];
   const headImgarr = [headimg1, headimg2, headimg3, headimg4]
+  const adImgs = [adimg1,adimg2,adimg3,adimg4];
   const brandsSlide1: SwipeSlideProps = {
     speed: 5000,
     delay: 0,
@@ -129,6 +133,16 @@ const App: React.FC = () => {
     direction: 'rtl',
     imgArr: imgArr
   };
+
+  const adSlide1:AdSlideProps ={
+  speed: 13000,
+  delay: 3000,
+  spaceBetween: 0,
+  pagination: false,
+  navigation: false,
+  clickable: false,
+  imgArr: adImgs
+  }
 
   return (
 
@@ -171,12 +185,8 @@ const App: React.FC = () => {
       <div className="ItemsContainer">
         <h1 className='display-8'>Our Products</h1>
         <div style={{width:"100%"}}>
-          <AllItems items={items}/>
-        </div>
-        <div>
-          <AddItemToCollection open={true} />
-        </div>
-       
+          <ItemCatagories/>
+        </div>       
       </div>
         {/* Uncomment and use these components as needed */}
         {/* <AdSlide /> */}
