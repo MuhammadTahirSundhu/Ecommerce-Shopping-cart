@@ -81,7 +81,7 @@ function UpdateItemInYourCollection() {
         id: items[UpdateContext.updateIndex].id, // retain the original id
         name: Name,
         description: Description,
-        catagory: Catagory,
+        catagory: Catagory.toLowerCase(),
         price: Price,
         quantity: Quantity,
         isAvailable: true,

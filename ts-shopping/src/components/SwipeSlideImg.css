@@ -1,24 +1,59 @@
 .swiperOut {
-    width: 100%;
-    height: 100%;
-    pointer-events: none; /* Makes the entire Swiper component non-interactive */
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Makes the entire Swiper component non-interactive */
+}
+
+.swiper-slideIn {
+  text-align: center;
+  font-size: 18px;
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slideIn img {
+  display: block;
+  width: 100%;
+  height: auto; /* Maintain aspect ratio */
+  object-fit: cover;
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+  .swiperOut {
+    height: 80%;
   }
-  
   .swiper-slideIn {
-    text-align: center;
-    font-size: 18px;
-    background: #fff;
-  
-    /* Center slide text vertically */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    font-size: 16px;
   }
-  
-  .swiper-slideIn img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+}
+
+@media (max-width: 992px) {
+  .swiperOut {
+    height: 70%;
   }
-  
+  .swiper-slideIn {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .swiperOut {
+    height: 60%;
+  }
+  .swiper-slideIn {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 576px) {
+  .swiperOut {
+    height: 50%;
+  }
+  .swiper-slideIn {
+    font-size: 10px;
+  }
+}

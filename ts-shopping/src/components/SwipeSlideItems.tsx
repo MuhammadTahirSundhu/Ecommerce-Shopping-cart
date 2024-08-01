@@ -5,7 +5,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-
+import './SwipeSlideItems.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../store/store';
 import { DeleteItem } from '../features/itemSlice';

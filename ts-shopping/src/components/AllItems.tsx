@@ -113,7 +113,7 @@ function AllItems({ items }: AllItemsProps) {
             </div>
             <div className="itemContainer">
                 {items.map((item, index) => (
-                    <Card className="item-basic" key={index} sx={{ maxWidth: 280, backgroundColor: 'grey', backdropFilter: 'blur(10px)', boxShadow: '0 4px 8px rgba(0, 0, 0, 1)', borderRadius: 2, border: '1px solid rgba(255, 255, 255, 0.2)' }}  >
+                    <Card className="item-basic" key={index} sx={{ color:"white",maxWidth: 280, background: 'rgba(255,255,255,0.4)', backdropFilter: 'blur(0px)', boxShadow: '0 4px 8px rgba(0, 0, 0, 1)', borderRadius: 2, border: ' 1px solid rgba(255,255,255,0.1)',  webkitBackdropFilter: 'blur(0px)' }}  >
                         <CardHeader
                             avatar={
                                 <Avatar sx={{ bgcolor: red[400] }} aria-label="Shoes">
