@@ -15,7 +15,7 @@ interface Item {
   img: string;
 }
 
-interface ItemState {
+export interface ItemState {
   items: Item[];
   isdelete:boolean;
   isUpdate: boolean,

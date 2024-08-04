@@ -1,0 +1,43 @@
+.swiperCat {
+  width: 100%;
+  height: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.swiper-slideCat {
+  width: 100%; /* Ensures the slide takes the full width */
+  height: 300px; /* Set a fixed height for the slides */
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative; /* Required for absolutely positioned children */
+  border-radius: 20px;
+}
+
+.swiper-slideCat img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the image covers the entire slide area */
+  box-sizing: border-box;
+  border-radius: 20px;
+
+}
+
+.swiper-slideCat .title {
+  position: absolute; /* Position the title absolutely within the slide */
+  top: 10px; /* Distance from the top */
+  left: 10px; /* Distance from the left */
+  font-size: calc(1rem + 1vw); /* Responsive font size */
+  font-weight: 500;
+  color: white; /* Adjust the color for better contrast */
+  padding: 5px; /* Padding around the title */
+  border-radius: 3px; /* Rounded corners for the title background */
+}

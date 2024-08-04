@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
+import './AdSlide.css'
 // Import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
@@ -24,7 +25,7 @@ interface AdSlideProps {
 const defaultProps: AdSlideProps = {
   speed: 300,
   delay: 3000,
-  spaceBetween: 30,
+  spaceBetween: 0,
   pagination: true,
   navigation: true,
   clickable: true,
@@ -49,7 +50,7 @@ const AdSlide: React.FC<{ attributes: AdSlideProps }> = ({ attributes = defaultP
       }}
       navigation={navigation}
       modules={[Autoplay, Pagination, Navigation]}
-      className="mySwiper"
+      className="adswiper"
     >
       {imgArr.map((imgSrc, index) => (
         <SwiperSlide key={index} className='adslide'>

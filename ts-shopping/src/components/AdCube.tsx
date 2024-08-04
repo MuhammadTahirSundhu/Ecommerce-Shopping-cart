@@ -39,16 +39,16 @@ const AdCube: React.FC<AdCubeProps> = ({ imgArr }) => {
     >
       <SwiperSlide className='adcubeslide'>
 
-        <img src={imgArr[0]} alt="Nature 1" className='adcubeslideimg' />
+        <img src={imgArr[0]} alt="Nature 1" className='adcubeslideimg' loading='lazy' />
       </SwiperSlide>
       <SwiperSlide className='adcubeslide'>
-        <img src={imgArr[1]} alt="Nature 2" className='adcubeslideimg'/>
+        <img src={imgArr[1]} alt="Nature 2" className='adcubeslideimg' loading='lazy'/>
       </SwiperSlide>
       <SwiperSlide className='adcubeslide'>
-        <img src={imgArr[2]} alt="Nature 3" className='adcubeslideimg'/>
+        <img src={imgArr[2]} alt="Nature 3" className='adcubeslideimg' loading='lazy'/>
       </SwiperSlide>
       <SwiperSlide className='adcubeslide'>
-        <img src={imgArr[3]} alt="Nature 4" className='adcubeslideimg'/>
+        <img src={imgArr[3]} alt="Nature 4" className='adcubeslideimg' loading='lazy'/>
       </SwiperSlide>
     </Swiper>
   );

@@ -22,10 +22,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../store/store';
 import { Rating } from '@mui/material';
 import StarIcon from '@mui/icons-material/Star';
-import shoes from '../assets/shoes.jpg'
+import shoes from '../assets/shoes.webp'
 import DeleteIcon from '@mui/icons-material/Delete';
-import { DeleteItem, UpdateItem } from '../features/itemSlice';
-import AlertUI from '@mui/material/Alert';
+import { DeleteItem } from '../features/itemSlice';
 import Alert from './Alert';
 import { ContextStates } from './UseContextStates';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';

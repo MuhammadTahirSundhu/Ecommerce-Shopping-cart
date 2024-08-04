@@ -74,7 +74,7 @@ const SwipeSlideImg: React.FC<{ attributes?: SwipeSlideProps }> = ({ attributes 
     >
       {imgArr.map((img, index) => (
         <SwiperSlide key={index} className='swiper-slideIn'>
-          <img src={img} alt={`Slide ${index + 1}`} />
+          <img src={img} alt={`Slide ${index + 1}`} loading='lazy' />
         </SwiperSlide>
       ))}
     </Swiper>

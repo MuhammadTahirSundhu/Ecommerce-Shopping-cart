@@ -31,8 +31,7 @@ import StarIcon from '@mui/icons-material/Star';
 import { styled } from '@mui/material/styles';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import shoes from '../assets/shoes.jpg'
-import { ClassNames } from '@emotion/react';
+import shoes from '../assets/shoes.webp'
 
 const ColorButton = styled(Button)(({ theme }) => ({
     color: theme.palette.getContrastText(purple[500]),
@@ -130,7 +129,7 @@ function SwipeSlide({ items }: SwipeSlideProps) {
                   }}
             >
                 {items.map((item, index) => (
-                    <SwiperSlide key={item.id} className='swiper-slideIn1'>
+                    <SwiperSlide key={index} className='swiper-slideIn1'>
                         <Card className="item-basic1"sx={{ color:"white",maxWidth: 280, background: 'rgba(104,107,166,0.5)', backdropFilter: 'blur(6px)', boxShadow: '0 3px 5px lightblue', borderRadius: 5, border: 'rgba(104,107,166,0.35)',  webkitBackdropFilter: 'blur(6px)' }}>
                             <CardHeader style={{height:"50px", color:"white"}}
                                 avatar={
@@ -158,6 +157,7 @@ function SwipeSlide({ items }: SwipeSlideProps) {
                                 component="img"
                                 height="150"
                                 image={shoes}
+                                loading='lazy'
                                 alt={item.name}
                             />
                             <CardContent>

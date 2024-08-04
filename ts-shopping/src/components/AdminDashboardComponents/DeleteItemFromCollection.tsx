@@ -90,7 +90,7 @@ function DeleteItemFromCollection() {
   return (
     <>
     <div className="deleteContainer">
-     <ItemCatagories/>
+     <AllItems items={items}/>
     </div>
     </>
   )

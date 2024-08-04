@@ -5,12 +5,18 @@ import './index.css'
 import store from './store/store'
 import { Provider } from 'react-redux'
 import { ContextProvider } from './components/UseContextStates.tsx'
+import { PersistGate } from 'redux-persist/integration/react'
+import { persistor } from './store/store.ts'
+import LoadingSkelton from './components/LoadingSkelton.tsx'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <Provider store={store}>
       <ContextProvider>
-      <App />
+        <PersistGate loading={<LoadingSkelton/>} persistor={persistor}>
+        {/* {persistor.purge()} */}
+          <App />
+        </PersistGate>
       </ContextProvider>
     </Provider>
   </React.StrictMode>,
