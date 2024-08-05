@@ -1,0 +1,167 @@
+ 
+
+.mainCContainer{
+    width: 100%;
+    height: auto;
+    display: flex;
+    padding: 50px;
+    align-items: center;
+    justify-content: center;
+    background:transparent;
+}
+
+.nestCCont1{
+    width: 30%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+   
+    border-radius: 20px;
+    background: rgb(55,134,227);
+    background: linear-gradient(180deg, rgba(55,134,227,1) 20%, rgba(105,171,244,1) 43%, rgba(174,200,227,1) 80%, rgba(226,230,234,1) 97%);
+    color: white;
+    margin: 10px;
+    padding: 50px;
+}
+
+.nestCCont1_1{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+.nestCCont1_2{
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+}
+.nestCCont2{
+    border: 1px solid rgb(191, 191, 187);
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay for readability */
+    border-radius: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 40px;
+    padding-bottom: 30px;
+}
+.Icons{
+    display: flex;
+    width: 100%;
+    height:100%;
+}
+.socialCIcon{
+    width: 20px; /* Set the width of the icon */
+    height: 20px; /* Set the height of the icon */
+    display: inline-block; /* Align icons horizontally */
+    margin: 5px; /* Space between icons */
+    border-radius: 50%; /* Optional: makes the icon circular */
+    overflow: hidden; /* Optional: ensures icons fit within the circle */
+    background-color: #f0f0f0; /* Optional: background color for the icon */
+    text-align: center; /* Center-align text or icon inside */
+    line-height: 40px; /* Center text vertically */
+    font-size: 20px; /* Adjust font size for the icon */
+    color: #000; /* Icon color */
+    transition: background-color 0.3s, color 0.3s, transform 0.3s, box-shadow 0.3s; /* Smooth transitions for hover effects */
+    position: relative; }
+  
+  .socialCIcon:hover {
+    background-color: #000; /* Background color on hover */
+  color: #00f; /* Neon color for the icon */
+  transform: rotate(360deg); /* Rotate icon on hover */
+  box-shadow: 0 0 10px 2px rgba(0, 0, 255, 0.8); /* Glowing neon effect */
+    
+  }
+
+  .formFields{
+    width: 90%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    color: #ded6d6;
+    justify-content: flex-start;
+  }
+  .eachField{
+    margin-bottom: 10px;
+    border: 1px solid grey;
+    background: transparent;
+    color: #ded6d6;
+
+  }
+
+  .eachField:focus{
+    border: 1px solid grey;
+    background: transparent;
+    color: #ded6d6;
+  }
+
+  @media (max-width: 1256px ) {
+    .nestCCont1, .nestCCont2{
+        padding: 20px;
+    }
+  }
+
+  @media (max-width: 1050px ) {
+    .mainCContainer{
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .nestCCont1{
+        width: 40%;
+    }
+    .nestCCont2{
+        width: 60%;
+    }
+  }
+
+  @media (max-width: 805px ) {
+    .mainCContainer{
+        padding-left: 20px;
+        padding-right: 20px;
+        flex-direction: column;
+    }
+    .nestCCont1{
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+    .nestCCont2{
+        width: 100%;
+    }
+    .nestCCont1_2{
+        width: 40%;
+        align-items: center;
+        justify-content: flex-start;
+        margin-left: 5px;
+    }
+    .nestCCont1_1{
+        flex-direction: row;
+    }
+    .Icons{
+        align-items: center;
+        justify-content: center;
+    }
+    .formFields{
+        width: 100%;
+    }
+    
+  }
+
+  @media (max-width: 600px ) {
+    .mainCContainer{
+    }
+   .nestCCont1_1{
+    flex-direction: column;
+   }
+   .nestCCont1_2{
+    width: 100%;
+   }
+  }

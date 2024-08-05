@@ -84,7 +84,6 @@
     margin-bottom: 3px;
   }
   .ItemsContainer{
-    border: 2px solid yellow;
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -96,7 +95,6 @@
   .adSlideContainer{
     width: 50%;
     height: 250px;
-    border: 2px solid red;
   }
   
   .cataSwiper
@@ -104,15 +102,56 @@
     width: 80%;
     border-radius: 50px;
   }
+  .AdSliderWholeContainer{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: auto;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 80px;
+    padding: 50px;
+  }
   .adSlider{
     width:50%;
-    border: 2px solid white;
-    justify-self: center;
-    align-self: flex-start;
-    padding-left: 30px;
+  }
+  .adSliderinfo{
+    width: 40%;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
   }
   
   /* Responsive styling */
+
+  @media (max-width: 1424px) {
+    .adSliderinfo h1{
+      font-size: 2em;
+    }
+    .adSliderinfo p{
+      font-size: 0.9em;
+    }
+  }
+
+  @media (max-width: 870px) {
+    .AdSliderWholeContainer{
+      flex-direction: column;
+      width: 100%;
+    }
+    .adSlider{
+      width:100%;
+    }
+    .adSliderinfo{
+      width: 100%;
+      height: 500px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-evenly;
+    }
+  }
   @media (max-width: 768px) {
     .header {
       flex-direction: column; /* Stack elements vertically */
@@ -151,10 +190,10 @@
     width: 90%;
     border-radius: 30px;
   }
+
+ 
+
   }
-  
-  
-  
   
   @media (max-width: 576px) {
     .brands{
@@ -166,4 +205,24 @@
     width: 100%;
     border-radius: 30px;
   }
+  .AdSliderWholeContainer{
+    padding: 0px;
   }
+  .adSlider{
+    width:100%;
+    height: 250px;
+  }
+  }
+  @media (max-width: 425px) {
+  .adSlider{
+    width:100%;
+    height: 200px;
+  }
+  }
+
+  @media (max-width: 320px) {
+    .adSlider{
+      width:100%;
+      height: 150px;
+    }
+    }

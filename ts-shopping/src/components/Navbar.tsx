@@ -17,6 +17,7 @@ import MoreIcon from '@mui/icons-material/MoreVert';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
 import Button from '@mui/material/Button';
+import {Link} from 'react-router-dom'
 import './Navbar.css'
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
@@ -198,7 +199,7 @@ export default function PrimarySearchAppBar() {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
-        <Toolbar sx={{ display: 'flex', flexDirection: "row", justifyContent: 'space-evenly', alignItems: "center", flexWrap: "wrap" }}>
+        <Toolbar sx={{ display: 'flex', flexDirection: "row", justifyContent: 'space-evenly', alignItems: "center", flexWrap: "wrap"}}>
           <Box>
             <IconButton
               size="large"
@@ -210,16 +211,16 @@ export default function PrimarySearchAppBar() {
             >
               <MenuIcon />
             </IconButton>
-            <IconButton color="inherit">
-              <Typography sx={{ margin: "5px" }}> <strong>TS Collections</strong></Typography>
+            <IconButton color="inherit" component={Link} to="/home">
+              <Typography sx={{ margin: '5px' }}><strong>TS Collections</strong></Typography>
             </IconButton>
-            <IconButton color="inherit">
+            <IconButton color="inherit" component={Link} to="/shopping">
               <Typography sx={{ margin: "5px" }}> <strong>Shop Now</strong></Typography>
             </IconButton>
-            <IconButton color="inherit">
+            <IconButton color="inherit" component={Link} to="/about">
               <Typography sx={{ margin: "5px" }}> <strong>About</strong></Typography>
             </IconButton>
-            <IconButton color="inherit">
+            <IconButton color="inherit" component={Link} to="/contact">
               <Typography sx={{ margin: "5px" }}> <strong>Contact</strong></Typography>
             </IconButton>
           </Box>
