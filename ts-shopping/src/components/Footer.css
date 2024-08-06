@@ -1,12 +1,18 @@
 
 .footer h1{
     font-size: 1.5em;
+    color: rgb(255, 255, 255);
+
 }
 .footer h2{
     font-size: 1.1em;
+    color: rgb(255, 255, 255);
+
 }
 .footer h3{
     font-size: 0.9em;
+    color: rgb(255, 255, 255);
+
 }
 .footer h4{
     font-size: 0.85em;

@@ -240,7 +240,7 @@ const Home: React.FC = () => {
           </div>
           <div className="adSliderinfo">
               <h1 className='display-4'>The Largest Store for Online Shopping in Pakistan</h1>
-              <p>Homeshopping.pk: Pioneer in e-commerce industry, we stand exceptional in offering electronic products under one roof with best prices and availability. The primary objective is to provide the best online shopping experience and the best customer service possible to the customers. There are countless products listed on the website, under different categories, from some of the best and reliable brands. So, if you are tired from work or don't want to drive in the hot weather, homeshopping.pk is a perfect place for you to shop all kinds of products from electronic gadgets to your favorite apparel while relaxing on your couch.</p>
+              <p>TS Collection: Pioneer in e-commerce industry, we stand exceptional in offering electronic products under one roof with best prices and availability. The primary objective is to provide the best online shopping experience and the best customer service possible to the customers. There are countless products listed on the website, under different categories, from some of the best and reliable brands. So, if you are tired from work or don't want to drive in the hot weather, homeshopping.pk is a perfect place for you to shop all kinds of products from electronic gadgets to your favorite apparel while relaxing on your couch.</p>
               <button className="btn btn-outline-light border-container">Learn More</button>
           </div>
           {/* <AddItemToCollection open={true} /> */}

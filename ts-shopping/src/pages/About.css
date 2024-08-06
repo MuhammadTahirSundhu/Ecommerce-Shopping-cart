@@ -1,0 +1,153 @@
+.AboutHeader {
+    display: flex;
+    flex-direction: row; /* Horizontal layout */
+    width: 100%;
+    min-height: 80vh; /* Ensure it covers the viewport height */
+    background-image: url('../assets/catagories/background.jpg'); /* Same image for continuity */
+    background-size: cover;
+    background-position:right;
+    background-attachment: fixed;
+    position: relative;
+    text-align: center;
+    color: white;
+    /* border: 2px solid yellow; */
+
+  }
+  
+  /* Overlay to darken the background image */
+
+  .AboutOverlay {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 20px; /* Add padding for better text layout */
+    overflow: hidden; /* Prevent content overflow */
+    border-radius: 30px;
+    width: 50%;
+    /* border: 2px solid rgb(255, 0, 0); */
+    margin-top: 50px;
+  }
+  .AboutDescription {
+    font-size: 1.25rem;
+    margin-bottom: 20px;
+    width: 100%; /* Ensure it takes the full width */
+    word-wrap: break-word; /* Ensure long words break to the next line */
+  }
+  .GeneralContainer{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: auto;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 50px;
+    background:rgb(255, 255, 255);
+    color: black;
+  }
+
+  .AboutAdSlider{
+    width:50%;
+  }
+  .AboutAdSliderinfo{
+    width: 40%;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    color: black;
+  }
+
+  .OurTeamMember{
+    width: 70%;
+    height: auto;
+    padding: 30px;
+    column-gap: 100px;
+    background: rgba(242, 239, 239, 0.5); /* Semi-transparent overlay for readability */
+    border: 1px solid grey;
+    border-radius: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+ 
+  .eachMember{
+    width: 150px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+  }
+
+  .eachMember img{
+    width: 100%;
+    height: 150px;
+    border: 1px solid grey;
+    border-radius: 50%;
+    -webkit-box-shadow: 2px 6px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 6px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 2px 6px 5px 0px rgba(0,0,0,0.75);
+} 
+
+  @media (max-width:1080px) {
+    .GeneralContainer{
+        flex-direction: column-reverse;
+    }
+    .AboutAdSlider{
+        width: 100%;
+    }
+    .AboutAdSliderinfo{
+        width: 100%;
+    }
+    .OurTeamMember{
+        width: 80%;
+        height: auto;
+        padding: 10px;
+        column-gap: 40px;
+      }
+  }
+  @media (max-width:800px) {
+    .OurTeamMember{
+        width: 100%;
+        height: auto;
+        padding: 10px;
+        column-gap: 10px;
+      }
+  }
+  @media (max-width:600px) {
+    .eachMember{
+        width: 100px;
+        height: 150px;
+      }
+      .eachMember img{
+        width: 100%;
+        height: 100px;
+      }
+  }
+  @media (max-width:512px) {
+    .AboutHeader{
+        min-height: 50vh; /* Ensure it covers the viewport height */
+    }
+      .GeneralContainer{
+          font-size: 0.6em;
+          padding: 10px;
+      }
+    .AboutOverlay{
+        width: 100%;
+    }
+        .AboutDescription{
+            font-size: 1rem;
+            margin-bottom: 0px;
+        }
+        .AboutAdSlider{
+            width: 100%;
+        }
+        .AboutAdSliderinfo{
+            width: 100%;
+            height: 350px;
+            margin-bottom: 0px;
+        }
+  }
