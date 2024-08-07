@@ -35,6 +35,7 @@ const defaultProps: AdSlideProps = {
 // Functional component using the props interface
 const AdSlide: React.FC<{ attributes: AdSlideProps }> = ({ attributes = defaultProps }) => {
   const { speed, delay, spaceBetween, pagination, navigation, clickable, imgArr } = attributes;
+  console.log(pagination);
 
   return (
     <Swiper

@@ -110,18 +110,13 @@ export default function AdminDashBoard() {
   const [Delete, setDelete] = React.useState(false)//3
   const [Update, setUpdate] = React.useState(false)//4
   const [Catagory, setCatagory] = React.useState(false)//5
-  const [AddCatagory, setAddCatagory] = React.useState(false)//6
-  const [DeleteCatagory, setDeleteCatagory] = React.useState(false)//7
-  const [Logout, setLogout] = React.useState(false)//8
 
-  function setStates(currState) {
+
+  function setStates(currState:any) {
     setWelcome(false);
     setAdd(false);
     setDelete(false);
     setUpdate(false);
-    setAddCatagory(false);
-    setDeleteCatagory(false);
-    setLogout(false);
     setCatagory(false);
     currState(true);
 

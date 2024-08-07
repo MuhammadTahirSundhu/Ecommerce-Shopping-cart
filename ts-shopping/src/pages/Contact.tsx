@@ -1,4 +1,3 @@
-import React from 'react'
 import './Contact.css'
 import icon1 from '../assets/socialIcons/facebook.webp'
 import icon2 from '..//assets/socialIcons/share.webp'

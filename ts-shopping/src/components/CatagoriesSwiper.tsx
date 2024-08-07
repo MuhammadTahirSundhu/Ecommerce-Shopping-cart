@@ -64,7 +64,6 @@ function selectImages(catArr: string[]): string[] {
 }
 // Functional component
 const CatagoriesSwiper: React.FC<{ attributes?: CataSwiperProps }> = ({ attributes }) => {
-  const sliderperview = attributes?.sliderperview || 1;
   const catArr = attributes?.catArr || [];
   const imgArr = selectImages(catArr);
   

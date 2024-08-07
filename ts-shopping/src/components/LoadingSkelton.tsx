@@ -7,10 +7,7 @@ import CardHeader from '@mui/material/CardHeader';
 import CardContent from '@mui/material/CardContent';
 import Skeleton from '@mui/material/Skeleton';
 
-interface MediaProps {
-   
-}
-function LoadingSkelton(props: MediaProps) {
+function LoadingSkelton() {
 
         return (
             <Card sx={{ maxWidth: 300, m: 2, borderRadius:'50px' }}>

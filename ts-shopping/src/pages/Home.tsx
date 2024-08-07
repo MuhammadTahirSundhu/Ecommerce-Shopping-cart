@@ -39,13 +39,11 @@ import headimg1 from '../assets/cubeImgs/1.webp';
 import headimg2 from '../assets/cubeImgs/2.webp';
 import headimg3 from '../assets/cubeImgs/3.webp';
 import headimg4 from '../assets/cubeImgs/4.webp';
-import advedio from '../assets/cubeImgs/ved.mp4';
 import adimg1 from '../assets/pros/1.webp'
 import adimg2 from '../assets/pros/2.webp'
 import adimg3 from '../assets/pros/3.webp'
 import adimg4 from '../assets/pros/4.webp'
 import CatagoriesSwiper from '../components/CatagoriesSwiper.tsx';
-import LoadingSkelton from '../components/LoadingSkelton.tsx';
 import SwipeSlideItems from '../components/SwipeSlideItems.tsx'
 import { useAllCatagoriesOnly } from '../components/customHooks.ts';
 

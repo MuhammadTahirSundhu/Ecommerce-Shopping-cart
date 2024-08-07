@@ -1,11 +1,10 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { setIsdelete, setIsUpdate } from '../../features/itemSlice';
 import { RootState } from '../../store/store';
 import './AddItemToCollection.css'
 import AllItems from '../AllItems';
-import SwipeSlide from '../SwipeSlideItems';
-import ItemCatagories from './ItemCatagories';
+
 
 
 // import React from 'react';

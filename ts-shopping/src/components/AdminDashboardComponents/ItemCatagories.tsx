@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import { AddItem, setIsdelete, setIsUpdate } from '../../features/itemSlice';
+import { useEffect, useState } from 'react'
+import {useSelector } from 'react-redux';
 import { RootState } from '../../store/store';
-import { nanoid } from '@reduxjs/toolkit';
 import SwipeSlide from '../SwipeSlideItems';
 import { useAllCatagoriesItems } from '../customHooks';
 function ItemCatagories() {

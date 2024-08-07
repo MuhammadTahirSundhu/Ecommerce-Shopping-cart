@@ -39,7 +39,7 @@ function UpdateItemInYourCollection() {
   const [Company, setCompany] = React.useState('');
   const [Review, setReview] = React.useState('');
   const [Img, setImg] = React.useState('');
-  const [fieldWidth, setfieldWidth] = React.useState("20ch");
+  const [fieldWidth] = React.useState("20ch");
   const [updateAlert,setupdateAlert] = React.useState(false);
   const UpdateContext = React.useContext(ContextStates);
 

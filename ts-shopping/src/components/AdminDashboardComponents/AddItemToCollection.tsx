@@ -1,9 +1,8 @@
 import * as React from "react";
 import TextField from "@mui/material/TextField";
 import SendIcon from "@mui/icons-material/Send";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { AddItem, setIsdelete, setIsUpdate } from '../../features/itemSlice';
-import { RootState } from '../../store/store';
 import { nanoid } from '@reduxjs/toolkit';
 
 import "./AddItemToCollection.css";
@@ -37,7 +36,6 @@ type AddItemToCollectionProps = {
 function AddItemToCollection(props: AddItemToCollectionProps) {
   const { open } = props;
   const dispatch = useDispatch();
-  const items = useSelector((state: RootState) => state.items.items);
 
 
   //states for form data

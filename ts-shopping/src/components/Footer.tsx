@@ -1,4 +1,3 @@
-import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import icon1 from '../assets/socialIcons/facebook.webp'
 import icon2 from '../assets/socialIcons/share.webp'

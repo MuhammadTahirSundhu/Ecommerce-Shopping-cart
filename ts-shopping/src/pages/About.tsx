@@ -1,4 +1,3 @@
-import React from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './About.css'
 import adimg1 from '../assets/about/1.webp'
