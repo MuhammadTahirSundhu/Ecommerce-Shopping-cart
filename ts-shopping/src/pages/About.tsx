@@ -12,6 +12,7 @@ import teamMember3 from '../assets/ourTeamMembers/3.webp';
 import teamMember4 from '../assets/ourTeamMembers/4.webp';
 import teamMember5 from '../assets/ourTeamMembers/5.webp';
 import teamMember6 from '../assets/ourTeamMembers/6.webp';
+import FactFigure from '../components/FactFigure';
 
 
 interface AdSlideProps {
@@ -66,7 +67,7 @@ function About() {
           </div>
         </div>
          <div className="GeneralContainer">
-         <h1 className='display-8'>Our Team</h1>
+         <h1 className='display-8'>Our Leading Team</h1>
          </div>
          <div className="GeneralContainer">
             <div className="OurTeamMember">
@@ -77,6 +78,20 @@ function About() {
               <div className="eachMember"><img src={teamMember5} alt='Zk. Thomas' loading='lazy'/><h6>Mark Henry</h6></div>
               <div className="eachMember"><img src={teamMember6} alt='Zk. Thomas' loading='lazy'/><h6>Wann George</h6></div>
             </div>
+         </div>
+         <div className="GeneralContainer">
+          <h1 className='display-8'>Facts & Figures</h1>
+         </div>
+         <div className="GeneralContainer" style={{background:" rgb(216, 216, 226)"}}>
+          <div className="FactsAndFigures">
+          <FactFigure Heading={"$100B+"} Description={"Net worth since TS Collections sctive"} Date={"August 14,2024"} />
+          <FactFigure Heading={"$7.7M+"} Description={"active listnings worldwide"} Date={"August 14,2024"} />
+          <FactFigure Heading={"$100K+"} Description={"cities and towns with active TS Collection listings"} Date={"August 14,2024"} />
+          <FactFigure Heading={"$1.5B+"} Description={"Anually Revenue after taxes and other expenses"} Date={"August 14,2024"} />
+          <FactFigure Heading={"14K"} Description={"14,000 signup on every working day"} Date={"August 14,2024"} />
+          <FactFigure Heading={"$10B+"} Description={"total taxes collected and remitted globally"} Date={"August 14,2024"} />
+          
+          </div>
          </div>
     </>
   )

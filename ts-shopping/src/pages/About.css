@@ -35,21 +35,27 @@
     word-wrap: break-word; /* Ensure long words break to the next line */
   }
   .GeneralContainer{
+    /* border: 2px solid red; */
     display: flex;
     flex-direction: row;
     width: 100%;
     height: auto;
     align-items: center;
     justify-content: space-evenly;
-    padding: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     background:rgb(255, 255, 255);
     color: black;
   }
 
   .AboutAdSlider{
     width:50%;
+    margin-top: 10px;
   }
   .AboutAdSliderinfo{
+    margin-top: 10px;
     width: 40%;
     height: 500px;
     display: flex;
@@ -63,8 +69,8 @@
     width: 70%;
     height: auto;
     padding: 30px;
-    column-gap: 100px;
-    background: rgba(242, 239, 239, 0.5); /* Semi-transparent overlay for readability */
+    column-gap: 80px;
+    background: rgba(234, 229, 229, 0.5); /* Semi-transparent overlay for readability */
     border: 1px solid grey;
     border-radius: 20px;
     display: flex;
@@ -91,6 +97,21 @@
     -moz-box-shadow: 2px 6px 5px 0px rgba(0,0,0,0.75);
     box-shadow: 2px 6px 5px 0px rgba(0,0,0,0.75);
 } 
+
+.eachMember img:hover{
+  transform: scale(1.005);
+}
+.FactsAndFigures{
+      width: 100%;
+      height: auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 20px;
+}
+
+
 
   @media (max-width:1080px) {
     .GeneralContainer{
@@ -150,4 +171,8 @@
             height: 350px;
             margin-bottom: 0px;
         }
+        .FactsAndFigures{
+          gap: 10px;
+    }
+    
   }

@@ -1,8 +1,12 @@
+import './Shopping.css'
 
 function Shopping() {
     return (
         <>
-        <div>Shopping</div>
+            <div className="GeneralContainer">
+                    <h1>Shop Now</h1>
+                    
+            </div>
         </>
     )
 }
