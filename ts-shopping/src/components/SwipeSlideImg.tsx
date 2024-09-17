@@ -37,8 +37,12 @@ const defaultProps: SwipeSlideProps = {
 
 const SwipeSlideImg: React.FC<{ attributes?: SwipeSlideProps }> = ({ attributes = defaultProps }) => {
   const { speed, delay, spaceBetween, pagination, pageperview, navigation, clickable, direction, imgArr } = attributes;
-console.log(pagination,navigation,clickable,direction);
 
+  pagination;
+  navigation;
+  clickable;
+  direction;
+  
   return (
     <Swiper
       slidesPerView={pageperview}
@@ -53,7 +57,7 @@ console.log(pagination,navigation,clickable,direction);
       loop={true}
       modules={[Autoplay, FreeMode, Pagination]}
       className="mySwiper swiperOut"
-      //style={{direction:`${direction}`}}
+      style={{direction:`ltr`}}
       breakpoints={{
         320: {
           slidesPerView: 6,
